@@ -1,0 +1,27 @@
+services:
+  mf-characters:
+    build:
+      context: .
+      dockerfile: mf-characters/Dockerfile
+    ports:
+      - "3001:80"
+
+  mf-characterdetail:
+    build:
+      context: .
+      dockerfile: mf-characterDetail/Dockerfile
+    ports:
+      - "3002:80"
+
+  mf-shell:
+    build:
+      context: .
+      dockerfile: mf-shell/Dockerfile
+      args:
+        FEDERATION_MF_CHARACTERS: http://localhost:3001/assets/remoteEntry.js
+        FEDERATION_MF_CHARACTERDETAIL: http://localhost:3002/assets/remoteEntry.js
+    ports:
+      - "3000:80"
+    depends_on:
+      - mf-characters
+      - mf-characterdetail

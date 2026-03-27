@@ -15,6 +15,11 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@shared-types/*": ["../shared-types/*"],
+      "@shared-types/character.types": ["../shared-types/character.types.ts"]
+    },
 
     /* Linting */
     "strict": true,
@@ -24,5 +29,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "../shared-types"]
 }
